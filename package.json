@@ -9,12 +9,21 @@
   },
   "dependencies": {
     "expo": "^35.0.0",
+    "expo-camera": "^7.0.0",
+    "expo-permissions": "^7.0.0",
+    "expokit": "^35.0.1",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera.git",
+    "react-native-fs": "^2.13.3",
+    "react-native-unimodules": "^0.6.0",
     "react-native-web": "^0.11.7"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.8.1",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.57.65",
     "babel-preset-expo": "^7.0.0",
