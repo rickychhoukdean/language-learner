@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 
 export default class EditScreen extends React.Component {
   static navigationOptions = {
-    title: "Welcome"
+    title: "Edit"
   };
   render() {
     return (

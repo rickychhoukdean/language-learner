@@ -7,7 +7,7 @@ interface IHomeScreenProps {
 
 export default class HomeScreen extends React.Component<IHomeScreenProps> {
   static navigationOptions = {
-    title: "Welcome"
+    title: "Home"
   };
   render() {
     const { navigate } = this.props.navigation;
