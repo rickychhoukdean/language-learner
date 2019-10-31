@@ -1,11 +1,12 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, Platform } from "react-native";
 import * as Permissions from "expo-permissions";
 import { Camera } from "expo-camera";
 import * as FileSystem from 'expo-file-system';
 
 
-export default class PictureScren extends React.Component {
+
+export default class PictureScreen extends React.Component {
   state = {
     hasCameraPermission: null,
     type: Camera.Constants.Type.back
@@ -17,18 +18,10 @@ export default class PictureScren extends React.Component {
     this.setState({ hasCameraPermission: status === "granted" });
   }
   takePicture() {
-    this.setState({
-      takeImageText: "... PROCESSING PICTURE ..."
-    });
-    this.camera.takePictureAsync({ skipProcessing: true }).then(data => {
-      this.setState(
-        {
-          takeImageText: "PICTURE TAKEN",
-          photo: data.uri
-        },
-        (this.state.photo)
-      );
-    }).then();
+    
+  }
+  processPicture() {
+    throw new Error("Method not implemented.");
   }
   render() {
     const { hasCameraPermission } = this.state;
