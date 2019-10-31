@@ -2,14 +2,14 @@ import React from "react";
 import { Text, View, TouchableOpacity, Platform } from "react-native";
 import * as Permissions from "expo-permissions";
 import { Camera } from "expo-camera";
-import * as FileSystem from 'expo-file-system';
-
-
+import * as FileSystem from "expo-file-system";
 
 export default class PictureScreen extends React.Component {
   state = {
     hasCameraPermission: null,
-    type: Camera.Constants.Type.back
+    type: Camera.Constants.Type.back,
+    photo: null,
+    data: {}
   };
   camera: any;
 
@@ -17,9 +17,26 @@ export default class PictureScreen extends React.Component {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === "granted" });
   }
-  takePicture() {
-    
-  }
+  takePicture = async () => {
+    if (this.camera) {
+      const options = {
+        quality: 0.5,
+        base64: true,
+        fixOrientation: true,
+        exif: true,
+        autoFocus: false
+      };
+
+      await this.camera.takePictureAsync(options).then(data => {
+        console.log(data.base64);
+        FileSystem.makeDirectoryAsync(FileSystem.documentDirectory + "photos/");
+        FileSystem.moveAsync({
+          from: data.uri,
+          to: FileSystem.documentDirectory + "photos/imagename.png"
+        });
+      });
+    }
+  };
   processPicture() {
     throw new Error("Method not implemented.");
   }
