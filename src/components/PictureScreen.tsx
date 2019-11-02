@@ -28,7 +28,8 @@ export default class PictureScreen extends React.Component {
       };
 
       await this.camera.takePictureAsync(options).then(data => {
-        console.log(data.base64);
+
+        
         FileSystem.makeDirectoryAsync(FileSystem.documentDirectory + "photos/");
         FileSystem.moveAsync({
           from: data.uri,
