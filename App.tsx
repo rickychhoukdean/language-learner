@@ -4,6 +4,16 @@ import HomeScreen from "./src/components/HomeScreen"
 import PictureScreen from "./src/components/PictureScreen"
 import EditScreen from "./src/components/EditScreen"
 import TestScreen from "./src/components/TestScreen"
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { connect } from 'react-redux'
+
+const rootReducer = (state = {}, action) => {
+  return state
+}
+
+const store = createStore(rootReducer)
+
 
 
 const MainNavigator = createStackNavigator({
@@ -13,6 +23,6 @@ const MainNavigator = createStackNavigator({
   Test: {screen: TestScreen}
 });
 
-const App = createAppContainer(MainNavigator);
+const App = <Provider store={store}>createAppContainer(MainNavigator)</Provider>;
 
 export default App;
