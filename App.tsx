@@ -1,28 +1,34 @@
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-import HomeScreen from "./src/components/HomeScreen"
-import PictureScreen from "./src/components/PictureScreen"
-import EditScreen from "./src/components/EditScreen"
-import TestScreen from "./src/components/TestScreen"
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import { connect } from 'react-redux'
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import { createStore } from "redux";
+import HomeScreen from "./src/components/HomeScreen";
+import PictureScreen from "./src/components/PictureScreen";
+import EditScreen from "./src/components/EditScreen";
+import TestScreen from "./src/components/TestScreen";
+import { Provider } from "react-redux";
+import React from "react";
 
 const rootReducer = (state = {}, action) => {
-  return state
-}
+  return state;
+};
 
-const store = createStore(rootReducer)
-
-
+const store = createStore(rootReducer);
 
 const MainNavigator = createStackNavigator({
-  Home: {screen: HomeScreen},
-  Picture: {screen: PictureScreen},
-  Edit: {screen: EditScreen},
-  Test: {screen: TestScreen}
+  Home: { screen: HomeScreen },
+  Picture: { screen: PictureScreen },
+  Edit: { screen: EditScreen },
+  Test: { screen: TestScreen }
 });
 
-const App = <Provider store={store}>createAppContainer(MainNavigator)</Provider>;
+const Navigation = createAppContainer(MainNavigator);
 
-export default App;
+export default class App extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
+    );
+  }
+}
