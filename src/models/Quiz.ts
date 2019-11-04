@@ -6,7 +6,7 @@ export enum Status {
 
 export default interface Quiz {
   Name: String | null;
-  Active: boolean;
+  Active: boolean | null;
   Word: {
     English: String;
     French: String;
